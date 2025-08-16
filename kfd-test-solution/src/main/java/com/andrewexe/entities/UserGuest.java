@@ -1,8 +1,8 @@
 package com.andrewexe.entities;
 
 public class UserGuest extends User{
-    public UserGuest(String fullname, String phoneNumber, int id) {
-        super(fullname, phoneNumber, id);
+    public UserGuest(int id, String fullname, String phoneNumber) {
+        super(id, fullname, phoneNumber);
     }
 
     @Override

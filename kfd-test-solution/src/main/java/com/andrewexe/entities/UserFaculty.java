@@ -2,8 +2,8 @@ package com.andrewexe.entities;
 
 public class UserFaculty extends User {
 
-    public UserFaculty(String fullname, String phoneNumber, int id) {
-        super(fullname, phoneNumber, id);
+    public UserFaculty( int id, String fullname, String phoneNumber) {
+        super( id, fullname, phoneNumber);
     }
 
     @Override

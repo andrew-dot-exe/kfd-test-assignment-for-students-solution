@@ -5,7 +5,7 @@ public abstract class User {
     protected String phoneNumber;
     protected int userId;
 
-    public User(String fullname, String phoneNumber, int id) {
+    public User(int id, String fullname, String phoneNumber) {
         this.fullName = fullname;
         this.phoneNumber = phoneNumber;
         this.userId = id;

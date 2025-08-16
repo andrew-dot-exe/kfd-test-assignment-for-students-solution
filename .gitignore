@@ -7,3 +7,5 @@ target/
 *.war
 *.ear
 *.log
+/kfd-test-solution/.gradle/
+/kfd-test-solution/build/

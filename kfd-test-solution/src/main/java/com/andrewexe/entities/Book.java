@@ -1,28 +1,28 @@
 package com.andrewexe.entities;
 
 public class Book {
-    private Long Isbn;
-    private String Name;
-    private String Author;
+    private Long isbn;
+    private String name;
+    private String author;
     private int pageCount;
 
     public Book(Long isbn, String name, String author, int pageCount) {
-        Isbn = isbn;
-        Name = name;
-        Author = author;
+        this.isbn = isbn;
+        this.name = name;
+        this.author = author;
         this.pageCount = pageCount;
     }
 
     public Long getIsbn() {
-        return Isbn;
+        return isbn;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public int getPageCount() {

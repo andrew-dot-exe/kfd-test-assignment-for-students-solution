@@ -30,7 +30,14 @@ public class UserRepository {
     }
 
     public void addUser(User user) throws IllegalArgumentException{
+        if(user.getUserId() != getNextId()){
+            throw new IllegalArgumentException("User id not last for user repository.");
+        }
         users.put(user.getUserId(), user);
+    }
+
+    public void editUser(User newUser){
+        users.replace(newUser.getUserId(), newUser);
     }
 
     public void removeUser(User user) throws IllegalArgumentException{
@@ -41,10 +48,25 @@ public class UserRepository {
         return new ArrayList<User>(users.values());
     }
 
+    public User getUser(int id){
+        return users.get(id);
+    }
+
     public void save(){
         if(repositoryFilename != null){
             System.out.println("saving data to file");
         }
+    }
+
+    private int getNextId(){
+        int max = 0;
+        for(int i : users.keySet())
+        {
+            if(i > max){
+                max = i;
+            }
+        }
+        return max;
     }
 }
 

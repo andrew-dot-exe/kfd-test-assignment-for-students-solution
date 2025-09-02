@@ -28,4 +28,9 @@ public class Book {
     public int getPageCount() {
         return pageCount;
     }
+
+    @Override
+    public String toString(){
+        return author + " - " + name + " ISBN: " + isbn + " " + pageCount + "pages";
+    }
 }

@@ -39,6 +39,10 @@ public class BookRepository {
         books.remove(book.getIsbn());
     }
 
+    public void editBook(Book newBook){
+        books.replace(newBook.getIsbn(), newBook);
+    }
+
     public List<Book> getAllBooks(){
         return new ArrayList<Book>(books.values());
     }

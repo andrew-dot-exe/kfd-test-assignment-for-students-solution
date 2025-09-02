@@ -23,9 +23,11 @@ public abstract class User {
         return userId;
     }
 
-    public void setUserId(int id){this.userId = id;}
-
     public abstract int getBookLimit();
     public abstract int getBorrowDayLimit();
 
+    @Override
+    public String toString(){
+        return userId + ": " + fullName + " " +phoneNumber ;
+    }
 }

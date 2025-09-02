@@ -12,22 +12,15 @@ public class LibraryController {
     private Scanner sc;
     private User selectedUser;
 
-    public void listAllBooks(){
-        List<Book> books = service.getAllBooks();
-        for(Book book: books){
-            System.out.println(book.toString());
-        }
-    }
+    public void listAll(List<Object> list){
+         for (Object item: list){
+             System.out.println(item.toString());
+         }
 
-    public void listAllUsers(){
-        for(User user: service.getUsers()){
-            System.out.println(user.toString());
-        }
     }
 
     public void selectUser(){
-        listAllUsers();
-        int id = sc.nextInt();
+
 
     }
 

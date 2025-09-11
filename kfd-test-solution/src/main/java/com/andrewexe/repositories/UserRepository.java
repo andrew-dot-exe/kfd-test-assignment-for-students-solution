@@ -2,6 +2,7 @@ package com.andrewexe.repositories;
 
 import com.andrewexe.entities.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +68,11 @@ public class UserRepository {
             }
         }
         return max;
+    }
+
+    public File saveRepository(String filename){
+
+        return null;
     }
 }
 

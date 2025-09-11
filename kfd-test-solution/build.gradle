@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'com.andrewexe'
@@ -9,11 +10,18 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass = 'com.andrewexe.Main'
+    applicationDefaultJvmArgs = ['-Dorg.gradle.console=verbose']
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
-
+tasks.run.configure {
+    standardInput = System.in
+}
 test {
     useJUnitPlatform()
 }

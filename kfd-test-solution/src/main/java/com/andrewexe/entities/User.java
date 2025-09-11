@@ -4,6 +4,7 @@ public abstract class User {
     protected String fullName;
     protected String phoneNumber;
     protected int userId;
+    protected UserType userType;
 
     public User(int id, String fullname, String phoneNumber) {
         this.fullName = fullname;

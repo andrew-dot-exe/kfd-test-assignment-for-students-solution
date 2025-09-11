@@ -4,6 +4,7 @@ package com.andrewexe.repositories;
 
 import com.andrewexe.entities.Book;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,9 +48,11 @@ public class BookRepository {
         return new ArrayList<Book>(books.values());
     }
 
-    public void save(){
-        if(repositoryFilename != null){
-            System.out.println("saving data to file");
-        }
+    public Book getBookIsbn(Long isbn){
+        return books.get(isbn);
+    }
+
+    public File saveRepository(String filename){
+        return null;
     }
 }

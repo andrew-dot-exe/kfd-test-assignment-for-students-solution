@@ -3,6 +3,7 @@ package com.andrewexe.entities;
 public class UserGuest extends User{
     public UserGuest(int id, String fullname, String phoneNumber) {
         super(id, fullname, phoneNumber);
+        this.userType = UserType.GUEST;
     }
 
     @Override

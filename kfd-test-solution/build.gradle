@@ -15,6 +15,13 @@ application {
     applicationDefaultJvmArgs = ['-Dorg.gradle.console=verbose']
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+}
+
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'

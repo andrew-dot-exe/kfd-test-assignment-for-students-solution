@@ -9,3 +9,4 @@ target/
 *.log
 /kfd-test-solution/.gradle/*
 /kfd-test-solution/build/*
+/kfd-test-solution/build/

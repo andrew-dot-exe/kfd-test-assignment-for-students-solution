@@ -10,49 +10,49 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BookRepository {
-
-    private String repositoryFilename = null;
-    private Map<Long, Book> books;
+public class BookRepository implements FileStoredRepository{
+    private Map<Integer, Book> books;
 
     public BookRepository(){
-        books = new HashMap<Long, Book>();
+        books = new HashMap<Integer, Book>();
     }
 
-    public void loadData(String filename){
-        repositoryFilename = filename;
-        if(repositoryFilename == null){
-            //in-memory
-            addBook(new Book(1L, "War and Peace", "Lev Tolsoi", 2144));
-            addBook(new Book(2L, "Idiot", "Fedor Dostoevskii", 640));
-            addBook(new Book(3L, "Ruslan And Lyudmila", "Aleksandr Pushkin", 336));
-            addBook(new Book(4L, "Postgres User Guide. The Introduction", "P. Puzanov, E.Rogov, I.Levshin", 190));
-            addBook(new Book(5L, "All About Scrum", "Claude Orbie", 352));
-
-        }
-    }
 
     public void addBook(Book book) throws IllegalArgumentException{
-        books.put(book.getIsbn(), book);
-    }
-
-    public void removeBook(Book book) throws IllegalArgumentException{
-        books.remove(book.getIsbn());
-    }
-
-    public void editBook(Book newBook){
-        books.replace(newBook.getIsbn(), newBook);
+        books.put(book.getId(), book);
     }
 
     public List<Book> getAllBooks(){
         return new ArrayList<Book>(books.values());
     }
 
-    public Book getBookIsbn(Long isbn){
-        return books.get(isbn);
+    public Book getBook(int id){
+        return books.get(id);
     }
 
-    public File saveRepository(String filename){
+    public ArrayList<Book> findBook(String phrase){
+        phrase = phrase.toLowerCase();
+        ArrayList<Book> result = new ArrayList<>();
+        for (Book book : books.values()){
+            String isbn = book.getIsbn().toString();
+            String bookNameLower = book.getName().toLowerCase();
+            String bookAuthorLower = book.getAuthor().toLowerCase();
+
+            if(isbn.contains(phrase) ||bookAuthorLower.contains(phrase) || bookNameLower.contains(phrase)){
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+
+    @Override
+    public void loadFromCsv(String filename) {
+
+    }
+
+    @Override
+    public File saveToCsv(String filename) {
         return null;
     }
 }

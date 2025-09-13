@@ -1,12 +1,14 @@
 package com.andrewexe.entities;
 
-public class Book {
-    private Long isbn;
-    private String name;
-    private String author;
-    private int pageCount;
+public class Book extends BaseEntity{
 
-    public Book(Long isbn, String name, String author, int pageCount) {
+    private final Long isbn;
+    private final String name;
+    private final String author;
+    private final int pageCount;
+
+    public Book(int id, Long isbn, String name, String author, int pageCount) {
+        super(id);
         this.isbn = isbn;
         this.name = name;
         this.author = author;
@@ -30,7 +32,7 @@ public class Book {
     }
 
     @Override
-    public String toString(){
+    public String getInfo() {
         return author + " - " + name + " ISBN: " + isbn + " " + pageCount + "pages";
     }
 }

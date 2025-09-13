@@ -4,7 +4,6 @@ public class UserStudent extends User{
 
     public UserStudent( int id, String fullname, String phoneNumber) {
         super(id, fullname, phoneNumber);
-        this.userType = UserType.STUDENT;
     }
 
     @Override

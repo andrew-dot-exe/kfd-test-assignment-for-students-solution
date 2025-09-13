@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserRepository {
+public class UserRepository implements FileStoredRepository{
 
     private String repositoryFilename = null;
     private Map<Integer, User> users;
@@ -17,32 +17,20 @@ public class UserRepository {
         users = new HashMap<Integer, User>();
     }
 
-    public void loadData(String filename){
-        repositoryFilename = filename;
-        if(repositoryFilename == null){
-            //in-memory
-            addUser(new UserStudent(1, "Ivan Ivanov", "+799923320"));
-            addUser(new UserStudent(2, "Sergej Ivanov", "+799923321"));
-            addUser(new UserFaculty(3, "Andrej Sidorov", "+799923322"));
-            addUser(new UserFaculty(4, "Eugene Petrov", "+799923323"));
-            addUser(new UserGuest(5, "Ian Petrov", "+799923324"));
-
-        }
-    }
 
     public void addUser(User user) throws IllegalArgumentException{
-        if(user.getUserId() != getNextId()){
+        if(user.getId() != getNextId()){
             throw new IllegalArgumentException("User id not last for user repository.");
         }
-        users.put(user.getUserId(), user);
+        users.put(user.getId(), user);
     }
 
     public void editUser(User newUser){
-        users.replace(newUser.getUserId(), newUser);
+        users.replace(newUser.getId(), newUser);
     }
 
     public void removeUser(User user) throws IllegalArgumentException{
-        users.remove(user.getUserId());
+        users.remove(user.getId());
     }
 
     public List<User> getAllUsers(){
@@ -51,12 +39,6 @@ public class UserRepository {
 
     public User getUser(int id){
         return users.get(id);
-    }
-
-    public void save(){
-        if(repositoryFilename != null){
-            System.out.println("saving data to file");
-        }
     }
 
     private int getNextId(){
@@ -70,7 +52,14 @@ public class UserRepository {
         return max;
     }
 
-    public File saveRepository(String filename){
+    @Override
+    public void loadFromCsv(String filename) {
+
+    }
+
+    @Override
+    public File saveToCsv(String filename) {
+        File file = new File(filename);
 
         return null;
     }

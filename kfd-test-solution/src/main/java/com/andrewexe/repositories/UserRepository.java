@@ -10,11 +10,10 @@ import java.util.Map;
 
 public class UserRepository implements FileStoredRepository{
 
-    private String repositoryFilename = null;
-    private Map<Integer, User> users;
+    private final Map<Integer, User> users;
 
     public UserRepository(){
-        users = new HashMap<Integer, User>();
+        users = new HashMap<>();
     }
 
 
@@ -25,16 +24,9 @@ public class UserRepository implements FileStoredRepository{
         users.put(user.getId(), user);
     }
 
-    public void editUser(User newUser){
-        users.replace(newUser.getId(), newUser);
-    }
-
-    public void removeUser(User user) throws IllegalArgumentException{
-        users.remove(user.getId());
-    }
 
     public List<User> getAllUsers(){
-        return new ArrayList<User>(users.values());
+        return new ArrayList<>(users.values());
     }
 
     public User getUser(int id){
